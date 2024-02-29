@@ -164,44 +164,6 @@ const deletecouponbyetat = async () => {
   });
 };
 
-// const deletepanier = async () => {
-//   // how recupere user by data and delete this user
-//   const panierexpererr = await db.expererpanier.findAll();
-//   panierexpererr.forEach(async (panierexpererr) => {
-//     var someDate = new Date();
-//     someDate.setDate(someDate.getDate() - 1);
-//     var dateFormated = someDate.toISOString().substr(0, 10);
-//     // console.log(panierexpererr.date_expiration)
-//     // console.log(dateFormated)
-//     if (
-//       panierexpererr.date_expiration == dateFormated ||
-//       panierexpererr.date_expiration < dateFormated
-//     ) {
-//       const findUser = await db.user.findOne({
-//         where: {
-//           id: panierexpererr.id_user,
-//         },
-//       });
-//       const findPanier = await db.panier.findOne({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
-
-//       await db.panier.destroy({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
-//       await db.expererpanier.destroy({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
-//       email(findUser.nom, findUser.email);
-//     }
-//   });
-// };
 
 const deleteproduitPromotion = async () => {
   // how recupere user by data and delete this user
