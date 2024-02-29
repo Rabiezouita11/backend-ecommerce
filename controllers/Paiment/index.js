@@ -1,5 +1,4 @@
-const {createCharges} = require('./paimentController');
-  
+const {createCharges} = require('../../controllers/Paiment/PaimentController');
   module.exports = {
     createCharges,
   };
