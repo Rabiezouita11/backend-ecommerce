@@ -3,7 +3,8 @@ var express = require("express");
 var router = express.Router();
 const Categories = require("../controllers/categorie/index");
 const { checkjwt } = require("../middlewares/checkjwt");
-const { upload } = require("../../ecommerce-backend/middlewares/uploid");
+const { upload } = require("../middlewares/uploid");
+
 /* GET categories listing. */
 router.get("/affichercategorie", Categories.afficherCategorie); // http://localhost:8080/categories/affichercategorie
 router.post("/ajoutercategorie", checkjwt,  upload, Categories.ajouterCategorie); // http://localhost:8080/categories/ajoutercategorie
