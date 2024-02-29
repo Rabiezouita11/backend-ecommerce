@@ -1,6 +1,6 @@
-import { createCharges } from './paimentController';
+const {createCharges} = require('./paimentController');
   
-  export default {
+  module.exports = {
     createCharges,
   };
   
