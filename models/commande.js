@@ -2,7 +2,7 @@
 module.exports = (sequelize, Sequelize) => {
     const commande = sequelize.define("commande", {
         Produit: {
-            type: Sequelize.ARRAY(Sequelize.STRING),
+            type: Sequelize.STRING,
             allowNull: true
         },
         total_prix: {
