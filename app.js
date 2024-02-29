@@ -98,155 +98,155 @@ app.use("/avis", avis);
 //   console.log('The world is going to end today.');
 // });
 
-// const myDailyTask = async () => {
-//   // how recupere user by data and delete this user
-//   const users = await db.user.findAll();
-//   users.forEach(async (user) => {
-//     var someDate = new Date();
-//     someDate.setDate(someDate.getDate());
-//     var dateFormated = someDate.toISOString().substr(0, 10);
-//     if (user.date_supprimer_compte == dateFormated) {
-//       await db.user.destroy({
-//         where: {
-//           id: user.id,
-//         },
-//       });
-//       await db.expererpanier.destroy({
-//         where: {
-//           id_user: user.id,
-//         },
-//       });
-//       await db.panier.destroy({
-//         where: {
-//           id_user: user.id,
-//         },
-//       });
-//     }
-//   });
-// };
-// const deletecoupon = async () => {
-//   // how recupere user by data and delete this user
-//   const coupon = await db.coupon.findAll();
-//   coupon.forEach(async (coupon) => {
-//     var someDate = new Date();
-//     someDate.setDate(someDate.getDate());
-//     var dateFormated = someDate.toISOString().substr(0, 10);
-//     // console.log(panierexpererr.date_expiration)
-//     // console.log(dateFormated)
-//     if (coupon.date_expiration == dateFormated) {
-//       findUser = await db.user.findOne({
-//         where: {
-//           id: coupon.id_user,
-//         },
-//       });
-//       emaildeletecoupoun(findUser.email, coupon.date_expiration, coupon.prix);
-//       await db.coupon.destroy({
-//         where: {
-//           id: coupon.id,
-//         },
-//       });
-//     }
-//   });
-// };
-// const deletecouponbyetat = async () => {
-//   // how recupere user by data and delete this user
-//   const coupon = await db.coupon.findAll();
-//   coupon.forEach(async (coupon) => {
-//     // console.log(panierexpererr.date_expiration)
-//     // console.log(dateFormated)
-//     if (coupon.etat != "en cours") {
-//       await db.coupon.destroy({
-//         where: {
-//           id: coupon.id,
-//         },
-//       });
-//     }
-//   });
-// };
+const myDailyTask = async () => {
+  // how recupere user by data and delete this user
+  const users = await db.user.findAll();
+  users.forEach(async (user) => {
+    var someDate = new Date();
+    someDate.setDate(someDate.getDate());
+    var dateFormated = someDate.toISOString().substr(0, 10);
+    if (user.date_supprimer_compte == dateFormated) {
+      await db.user.destroy({
+        where: {
+          id: user.id,
+        },
+      });
+      await db.expererpanier.destroy({
+        where: {
+          id_user: user.id,
+        },
+      });
+      await db.panier.destroy({
+        where: {
+          id_user: user.id,
+        },
+      });
+    }
+  });
+};
+const deletecoupon = async () => {
+  // how recupere user by data and delete this user
+  const coupon = await db.coupon.findAll();
+  coupon.forEach(async (coupon) => {
+    var someDate = new Date();
+    someDate.setDate(someDate.getDate());
+    var dateFormated = someDate.toISOString().substr(0, 10);
+    // console.log(panierexpererr.date_expiration)
+    // console.log(dateFormated)
+    if (coupon.date_expiration == dateFormated) {
+      findUser = await db.user.findOne({
+        where: {
+          id: coupon.id_user,
+        },
+      });
+      emaildeletecoupoun(findUser.email, coupon.date_expiration, coupon.prix);
+      await db.coupon.destroy({
+        where: {
+          id: coupon.id,
+        },
+      });
+    }
+  });
+};
+const deletecouponbyetat = async () => {
+  // how recupere user by data and delete this user
+  const coupon = await db.coupon.findAll();
+  coupon.forEach(async (coupon) => {
+    // console.log(panierexpererr.date_expiration)
+    // console.log(dateFormated)
+    if (coupon.etat != "en cours") {
+      await db.coupon.destroy({
+        where: {
+          id: coupon.id,
+        },
+      });
+    }
+  });
+};
 
-// const deletepanier = async () => {
-//   // how recupere user by data and delete this user
-//   const panierexpererr = await db.expererpanier.findAll();
-//   panierexpererr.forEach(async (panierexpererr) => {
-//     var someDate = new Date();
-//     someDate.setDate(someDate.getDate() - 1);
-//     var dateFormated = someDate.toISOString().substr(0, 10);
-//     // console.log(panierexpererr.date_expiration)
-//     // console.log(dateFormated)
-//     if (
-//       panierexpererr.date_expiration == dateFormated ||
-//       panierexpererr.date_expiration < dateFormated
-//     ) {
-//       const findUser = await db.user.findOne({
-//         where: {
-//           id: panierexpererr.id_user,
-//         },
-//       });
-//       const findPanier = await db.panier.findOne({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
+const deletepanier = async () => {
+  // how recupere user by data and delete this user
+  const panierexpererr = await db.expererpanier.findAll();
+  panierexpererr.forEach(async (panierexpererr) => {
+    var someDate = new Date();
+    someDate.setDate(someDate.getDate() - 1);
+    var dateFormated = someDate.toISOString().substr(0, 10);
+    // console.log(panierexpererr.date_expiration)
+    // console.log(dateFormated)
+    if (
+      panierexpererr.date_expiration == dateFormated ||
+      panierexpererr.date_expiration < dateFormated
+    ) {
+      const findUser = await db.user.findOne({
+        where: {
+          id: panierexpererr.id_user,
+        },
+      });
+      const findPanier = await db.panier.findOne({
+        where: {
+          id_user: panierexpererr.id_user,
+        },
+      });
 
-//       await db.panier.destroy({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
-//       await db.expererpanier.destroy({
-//         where: {
-//           id_user: panierexpererr.id_user,
-//         },
-//       });
-//       email(findUser.nom, findUser.email);
-//     }
-//   });
-// };
+      await db.panier.destroy({
+        where: {
+          id_user: panierexpererr.id_user,
+        },
+      });
+      await db.expererpanier.destroy({
+        where: {
+          id_user: panierexpererr.id_user,
+        },
+      });
+      email(findUser.nom, findUser.email);
+    }
+  });
+};
 
-// const deleteproduitPromotion = async () => {
-//   // how recupere user by data and delete this user
-//   const produit = await db.produit.findAll();
-//   produit.forEach(async (produit) => {
-//     var someDate = new Date();
-//     someDate.setDate(someDate.getDate());
-//     var dateFormated = someDate.toISOString().substr(0, 10);
+const deleteproduitPromotion = async () => {
+  // how recupere user by data and delete this user
+  const produit = await db.produit.findAll();
+  produit.forEach(async (produit) => {
+    var someDate = new Date();
+    someDate.setDate(someDate.getDate());
+    var dateFormated = someDate.toISOString().substr(0, 10);
 
-//     if (produit.date_exp == dateFormated) {
-//       await db.produit.update(
-//         {
-//           promotion: "false",
-//           date_exp: null,
-//           prix: produit.prixold,
-//         },
-//         {
-//           where: {
-//             id: produit.id,
-//           },
-//         }
-//       );
-//     }
-//   });
-// };
+    if (produit.date_exp == dateFormated) {
+      await db.produit.update(
+        {
+          promotion: "false",
+          date_exp: null,
+          prix: produit.prixold,
+        },
+        {
+          where: {
+            id: produit.id,
+          },
+        }
+      );
+    }
+  });
+};
 
-// const deleteexpererpanier = async () => {
-//   const checkiduserpanierifexist = await db.expererpanier.findAll();
-//   const checkiduserexperepanierifexist = await db.expererpanier.findAll();
-//   // if iduser n'existe pas dans panier alors on supprime iduser dans expererpanier
-//   checkiduserpanierifexist.forEach(async (checkiduserpanierifexist) => {
-//     const findpanier = await db.panier.findOne({
-//       where: {
-//         id_user: checkiduserpanierifexist.id_user,
-//       },
-//     });
-//     if (findpanier == null) {
-//       await db.expererpanier.destroy({
-//         where: {
-//           id_user: checkiduserpanierifexist.id_user,
-//         },
-//       });
-//     }
-//   });
-// };
+const deleteexpererpanier = async () => {
+  const checkiduserpanierifexist = await db.expererpanier.findAll();
+  const checkiduserexperepanierifexist = await db.expererpanier.findAll();
+  // if iduser n'existe pas dans panier alors on supprime iduser dans expererpanier
+  checkiduserpanierifexist.forEach(async (checkiduserpanierifexist) => {
+    const findpanier = await db.panier.findOne({
+      where: {
+        id_user: checkiduserpanierifexist.id_user,
+      },
+    });
+    if (findpanier == null) {
+      await db.expererpanier.destroy({
+        where: {
+          id_user: checkiduserpanierifexist.id_user,
+        },
+      });
+    }
+  });
+};
 
 // io.on("connection",function(socket){
 //   console.log("a user connected");
