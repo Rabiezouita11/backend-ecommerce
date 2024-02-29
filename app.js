@@ -165,6 +165,7 @@ const deletecouponbyetat = async () => {
 };
 
 
+
 const deleteproduitPromotion = async () => {
   // how recupere user by data and delete this user
   const produit = await db.produit.findAll();
@@ -239,7 +240,6 @@ server.listen(3000, function () {
 shedule.scheduleJob("*/2 * * * * * ", () => {
   myDailyTask();
   deleteproduitPromotion();
-  deletepanier();
   deleteexpererpanier();
   deletecoupon();
   deletecouponbyetat();
