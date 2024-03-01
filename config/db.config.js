@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "",
-    DB: "ecommerce",
+    HOST: "sql312.infinityfree.com",
+    USER: "if0_36028754",
+    PASSWORD: "1wX4rLbcl5zCFkX",
+    DB: "if0_36028754_ecommerce",
     dialect: "mysql",
     pool: {
         max: 5,
