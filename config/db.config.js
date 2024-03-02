@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "sql312.infinityfree.com",
-    USER: "if0_36028754",
-    PASSWORD: "1wX4rLbcl5zCFkX",
-    DB: "if0_36028754_ecommerce",
+    HOST: "fdb1033.awardspace.net",
+    USER: "4064961_younes",
+    PASSWORD: "Tf6(*/^y9Q:fIg5W",
+    DB: "4064961_younes",
     dialect: "mysql",
     pool: {
         max: 5,
