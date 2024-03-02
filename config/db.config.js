@@ -1,13 +1,18 @@
+require("dotenv").config({ path: ".env" });
+
+
 module.exports = {
-    HOST: "fdb1033.awardspace.net",
-    USER: "4064961_younes",
-    PASSWORD: "Tf6(*/^y9Q:fIg5W",
-    DB: "4064961_younes",
+    HOST: process.env.DB_HOST,
+    USER: process.env.DB_USER,
+    PASSWORD: process.env.DB_PW,
+    DB: process.env.DB_NAME,
     dialect: "mysql",
+    
     pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000,
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
     },
-};
+  };
+  

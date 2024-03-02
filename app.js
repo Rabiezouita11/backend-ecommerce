@@ -51,12 +51,12 @@ app.use(
 );
 
 db.sequelize
-  .sync() // { force: true } will drop the table if it already exists
+  .sync()
   .then(() => {
     console.log("Synced db.");
   })
   .catch((err) => {
-    console.log("Failed to sync db: " + err.message);
+    console.log("Failed to sync db: " + err);
   });
 db.sequelize.options.logging = false;
 // view engine setup

@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-  operatorsAliases: 0,
+	operationsAliases: false,
 
   pool: {
     max: dbConfig.pool.max,
@@ -11,6 +11,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle,
   },
+  
 });
 const db = {};
 
@@ -19,7 +20,6 @@ db.sequelize = sequelize;
 db.user = require("./user.js")(sequelize, Sequelize);
 db.produit = require("./produit.js")(sequelize, Sequelize);
 db.coupon = require("./coupon.js")(sequelize, Sequelize);
-// db.expererpanier = require("./expererpanier.js")(sequelize, Sequelize);
 
 db.categorie = require("./categorie.js")(sequelize, Sequelize);
 db.adresse = require("./adresse.js")(sequelize, Sequelize);
@@ -55,9 +55,6 @@ db.produit.hasMany(db.imageProduit, {
 db.panier.belongsTo(db.user, {
   foreignKey: "id_user",
 });
-// db.expererpanier.belongsTo(db.user, {
-//   foreignKey: "id_user",
-// });
 
 db.categorie.hasMany(db.produit, {
   foreignKey: "id_categorie",
